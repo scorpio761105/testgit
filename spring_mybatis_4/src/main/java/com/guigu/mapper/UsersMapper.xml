@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guigu.mapper.UsersMapper">
+	<insert id="saveUsers" parameterType="Users">
+		insert into users(uname,upass,score,birthday) values(#{uname},#{upass},#{score},#{birthday}) 
+	</insert>
+	<update id="updateUsers" parameterType="Users">
+		update users set uname=#{uname},upass=#{upass},score=#{score},birthday=#{birthday} where uid=#{uid}
+	</update>
+	<delete id="deleteUsersByUid" parameterType="_int">
+		delete from users where uid=#{id}
+	</delete>
+	
+	<select id="selectUsersByUid" parameterType="_int"  resultType="Users">
+		select * from users where uid=#{id}
+	</select>
+	<select id="selectAllUsers" resultType="Users">
+		select * from users
+	</select>
+	
+	
+</mapper>
